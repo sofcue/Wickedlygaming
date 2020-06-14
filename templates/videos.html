@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+{% block content %}
+
+<style>
+        body {
+  padding-top: 3.5rem;
+  background-color: #B2DFDB;
+}
+    h1 {
+        padding-top: 5rem;
+    }
+    </style>
+<!-- The video tag: -->
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for video in videos %}
+            {% video video.video as video %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    {% video video "medium" %}
+                    {% endvideo %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
