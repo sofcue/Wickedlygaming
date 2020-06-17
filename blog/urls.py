@@ -9,6 +9,7 @@ urlpatterns = [
     path('content/', views.post_list, name='post_list'),
     path('<slug:slug>/edit', views.post_edit, name='post_edit'),
     path('videos', views.videos, name='videos'),
+    path('new_video/', views.add_video, name='add_video'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
 
 ]

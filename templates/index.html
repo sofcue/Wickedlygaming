@@ -1,12 +1,16 @@
 {%   extends "base.html" %}
+{% load static %}
 {% block content %}
     <style>
         body {
   padding-top: 3.5rem;
   background-color: #B2DFDB;
+             font-family: "Roboto", sans-serif;
+        font-size: 18px;
 }
-{#.jumbotron {#}
-{#	background-image: url("youtubecover.jpg");#}
+.jumbotron {
+	background-image: url({% static "images/background.jpg" %});
+}
     </style>
 
 

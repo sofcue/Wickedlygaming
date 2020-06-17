@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Videos
-from .forms import PostForm
+from .forms import PostForm, VideoForm
 from django.utils import timezone
 
 
@@ -62,3 +62,16 @@ def videos(request):
     allItems = Videos.objects.all()
 
     return render(request, 'videos.html', {'videos': allItems})
+
+
+def add_video(request):
+    if request.method == 'POST':
+        form = VideoForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return redirect('videos')
+    else:
+        form = PostForm()
+    template_name = 'video_edit.html'
+    return render(request, template_name, {'form': form})

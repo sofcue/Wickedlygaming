@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+<style>
+    p {
+        margin-top: 3.5rem;
+    }
+</style>
+{% block content %}
+    <h2>New post</h2>
+    <div class="col-md-8 mt-3 left">
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+{% endblock %}

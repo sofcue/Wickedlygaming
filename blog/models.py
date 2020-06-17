@@ -30,7 +30,7 @@ class Videos(models.Model):
     video = EmbedVideoField()  # same like models.URLField()
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
         verbose_name_plural = "Videos"
