@@ -10,7 +10,13 @@
     h1 {
         padding-top: 5rem;
     }
+    .card-body{
+        height: 480px;
+    }
+
+
     </style>
+
 <!-- The video tag: -->
 <div class="container">
     <div class="row">
@@ -20,7 +26,7 @@
             {% video video.video as video %}
             <div class="card mb-4">
                 <div class="card-body">
-                    {% video video "medium" %}
+                    {% video video '100% x 100%' %}
                     {% endvideo %}
                 </div>
             </div>
