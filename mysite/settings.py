@@ -28,7 +28,7 @@ SECRET_KEY = 'qh6cvj62cf1^x0g619a81@@5y^zu3n3_&to7x#ibouish&fl&@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.wickedlygaming.com', '127.0.0.1']
+ALLOWED_HOSTS = ['wickedlygaming.com', '127.0.0.1']
 
 # Application definition
 
