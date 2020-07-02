@@ -72,6 +72,6 @@ def add_video(request):
             post.save()
             return redirect('videos')
     else:
-        form = PostForm()
+        form = VideoForm()
     template_name = 'video_edit.html'
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'video_form': form})

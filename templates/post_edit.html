@@ -1,17 +1,27 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
 <style>
     p {
         margin-top: 3.5rem;
     }
+    body {
+        padding-top: 10rem;
+       max-width: 1000px;
+       margin: auto;
+       background-color: #B2DFDB;
+    }
 </style>
-{% block content %}
+
     <h2>New post</h2>
     <div class="col-md-8 mt-3 left">
 
     <form method="POST" class="post-form">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
+        {% buttons %}
         <button type="submit" class="save btn btn-default">Save</button>
+        {% endbuttons %}
     </form>
     </div>
 {% endblock %}

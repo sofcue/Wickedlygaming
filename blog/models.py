@@ -17,6 +17,7 @@ class Post(models.Model):
     content = models.TextField()
     createdOn = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    # image = models.ImageField()
 
     class Meta:
         ordering = ['-createdOn']
