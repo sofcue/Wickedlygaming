@@ -43,7 +43,7 @@ def add_post(request):
             post.author = request.user
             post.updatedOn = timezone.now()
             post.save()
-            return redirect('post_detail.html', slug=post.slug)
+            return redirect('post_detail', slug=post.slug)
     else:
         form = PostForm()
     template_name = 'post_edit.html'
@@ -92,7 +92,7 @@ def add_comment_to_post(request, slug):
             comment = form.save(commit=False)
             comment.post = post
             comment.save()
-            return redirect('post_detail.html', slug=post.slug)
+            return redirect('post_detail', slug=post.slug)
     else:
         form = CommentForm()
     return render(request, 'add_comment_to_post.html', {'form': form})
@@ -102,12 +102,12 @@ def add_comment_to_post(request, slug):
 def comment_approve(request, slug):
     comment = get_object_or_404(Comment, slug=slug)
     comment.approve()
-    return redirect('post_detail.html', slug=comment.post.slug)
+    return redirect('post_detail', slug=comment.post.slug)
 
 
 @login_required
 def comment_remove(request, slug):
     comment = get_object_or_404(Comment, slug=slug)
     comment.delete()
-    return redirect('post_detail.html', slug=comment.post.slug)
+    return redirect('post_detail', slug=comment.post.slug)
 
