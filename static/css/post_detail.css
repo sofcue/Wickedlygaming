@@ -17,13 +17,17 @@ body {
 
 }
 
-.btn {
-    margin: 20px;
-    align-content: center;
-     transition-duration: 0.4s;
+.btn-outline,
+.btn-outline:hover {
+  border-color: #64FFDA
 }
 
-.btn:hover {
-    background-color: #18FFFF;
-  color: white;
+.btn-outline {
+  border-radius: 30px;
 }
+
+.btn-outline:hover {
+ background-color : #64FFDA;
+}
+
+

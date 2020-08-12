@@ -11,6 +11,19 @@
        margin: auto;
        background-color: #B2DFDB;
     }
+.btn-outline,
+.btn-outline:hover {
+  border-color: #64FFDA
+}
+
+.btn-outline {
+  border-radius: 30px;
+}
+
+.btn-outline:hover {
+ background-color : #64FFDA;
+}
+
 </style>
 
     <h2>New post</h2>
@@ -20,7 +33,7 @@
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-outline">Save</button>
         {% endbuttons %}
     </form>
     </div>

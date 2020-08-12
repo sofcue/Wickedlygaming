@@ -3,20 +3,34 @@
 {% block content %}
 
     <style>
-    body {
-        padding-top: 10rem;
-        max-width: 500px;
-        margin: auto;
-        background-color: #B2DFDB;
-    }
+        body {
+            padding-top: 10rem;
+            max-width: 500px;
+            margin: auto;
+            background-color: #B2DFDB;
+        }
+
+        .btn-outline,
+        .btn-outline:hover {
+            border-color: #64FFDA
+        }
+
+        .btn-outline {
+            border-radius: 30px;
+        }
+
+        .btn-outline:hover {
+            background-color: #64FFDA;
+        }
+
     </style>
     <h1>Login</h1>
     <form method="post">
-    {% csrf_token %}
-        {%  bootstrap_form form %}
-        {%  buttons %}
-            <button type="submit">Login</button>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn-outline">Login</button>
         {% endbuttons %}
     </form>
 
- {% endblock %}
+{% endblock %}

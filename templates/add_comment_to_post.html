@@ -9,11 +9,24 @@
        max-width: 1000px;
        margin: auto;
        background-color: #B2DFDB;
-   }
+   ]
+   .btn-outline,
+.btn-outline:hover {
+  border-color: #64FFDA
+}
+
+.btn-outline {
+  border-radius: 30px;
+}
+
+.btn-outline:hover {
+ background-color : #64FFDA;
+}
+
 </style>
     <h1>New comment</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {% bootstrap_form form %}
-        <button type="submit" class="save btn btn-default">Send</button>
+        <button type="submit" class="save btn btn-outline">Send</button>
     </form>
 {% endblock %}
