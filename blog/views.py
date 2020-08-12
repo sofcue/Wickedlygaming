@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Videos
-from .forms import PostForm, VideoForm
+from .models import Post, Videos, Comment
+from .forms import PostForm, VideoForm, CommentForm
 from django.utils import timezone
 
 
@@ -9,6 +10,12 @@ from django.utils import timezone
 def index(request):
     queryset = Post.objects.filter(status=1).order_by('-createdOn')
     template_name = 'index.html'
+    return render(request, template_name, {'queryset': queryset})
+
+
+def draft(request):
+    queryset = Post.objects.filter(status=0).order_by('-createdOn')
+    template_name = 'draft_post.html'
     return render(request, template_name, {'queryset': queryset})
 
 
@@ -30,13 +37,13 @@ def post_list(request):
 
 def add_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.updatedOn = timezone.now()
             post.save()
-            return redirect('post_detail', slug=post.slug)
+            return redirect('post_detail.html', slug=post.slug)
     else:
         form = PostForm()
     template_name = 'post_edit.html'
@@ -46,7 +53,7 @@ def add_post(request):
 def post_edit(request, slug):
     post = get_object_or_404(Post, slug=slug)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -75,3 +82,32 @@ def add_video(request):
         form = VideoForm()
     template_name = 'video_edit.html'
     return render(request, template_name, {'video_form': form})
+
+
+def add_comment_to_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail.html', slug=post.slug)
+    else:
+        form = CommentForm()
+    return render(request, 'add_comment_to_post.html', {'form': form})
+
+
+@login_required
+def comment_approve(request, slug):
+    comment = get_object_or_404(Comment, slug=slug)
+    comment.approve()
+    return redirect('post_detail.html', slug=comment.post.slug)
+
+
+@login_required
+def comment_remove(request, slug):
+    comment = get_object_or_404(Comment, slug=slug)
+    comment.delete()
+    return redirect('post_detail.html', slug=comment.post.slug)
+

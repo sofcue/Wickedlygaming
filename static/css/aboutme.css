@@ -1,3 +1,14 @@
-h1 {
-    margin-top: 3.5rem;
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    padding-top: 4.5rem;
+    background-color: #B2DFDB;
+}
+img {
+    max-height: 350px;
+    max-width: 500px;
+}
+p {
+    font-family: "The Sims Sans";
+    font-size: 20px;
 }

@@ -16,7 +16,7 @@
     <h2>New post</h2>
     <div class="col-md-8 mt-3 left">
 
-    <form method="POST" class="post-form">
+    <form method="POST" enctype="multipart/form-data" class="post-form">
         {% csrf_token %}
         {% bootstrap_form form %}
         {% buttons %}
