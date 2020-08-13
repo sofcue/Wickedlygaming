@@ -19,5 +19,6 @@ urlpatterns = [
     path('post/<slug:slug>/comment/', views.add_comment_to_post, name='add_comment_to_video'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('draft', views.draft, name='draft_post'),
+    path('delete/<slug:slug>', views.delete_post, name='delete'),
 
 ]

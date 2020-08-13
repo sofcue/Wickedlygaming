@@ -111,3 +111,8 @@ def comment_remove(request, slug):
     comment.delete()
     return redirect('post_detail', slug=comment.post.slug)
 
+def delete_post(request, slug):
+    post_to_delete = Post.objects.get(slug=slug)
+    post_to_delete.delete()
+    return redirect('post_list')
+

@@ -23,7 +23,6 @@
                     <p class="card-text">{{post.content|slice:":200" }}</p>
                     <a href="{% url 'post_detail' slug=post.slug %}">Comments: {{ post.approved_comments.count }}</a>
                   <a href="{% url 'post_detail' slug=post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
-
                 </div>
             </div>
             {% endfor %}
