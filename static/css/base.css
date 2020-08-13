@@ -14,10 +14,13 @@ body {
     user-select: none;
 }
 
-@media (min-width: 768px) { }
+@media (min-width: 768px) {
+}
+
 .bd-placeholder-img-lg {
     font-size: 3.5rem;
 }
+
 .navbar-nav .nav-link {
     padding-right: 0;
     padding-left: 0;
@@ -26,12 +29,19 @@ body {
     font-family: "The Sims Sans";
 
 }
+
 .navbar-brand {
     font-family: "The Sims Sans";
     font-size: 40px;
 
 }
+
 .bg-custom {
     background-color: #26A69A;
+}
+
+@font-face {
+    font-family: "The Sims Sans";
+    src: url('../font/thesimssans.woff');
 }
 
