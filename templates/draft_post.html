@@ -24,9 +24,9 @@
                             <p class="card-text">{{ post.content|slice:":200" }}</p>
                             <a href="{% url 'post_detail' slug=post.slug %}" class="btn btn-primary">Read More
                                 &rarr;</a>
-                            {% if empty %}
+                            {% empty %}
                             <h3>No Draft Posts</h3>
-                            {% endif %}
+                            
                         </div>
                     </div>
                 {% endfor %}
